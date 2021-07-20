@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Service.MqttClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,11 @@ namespace Service.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly MyMqttClient Client;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,MyMqttClient _client)
         {
             _logger = logger;
+            Client = _client;
         }
 
         [HttpGet]
