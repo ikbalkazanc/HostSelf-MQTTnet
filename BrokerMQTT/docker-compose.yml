@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  broker:
+    container_name: broker
+    build: ./Broker
+    ports:
+      - "1884:1883"
+
+  service:
+    container_name: service
+    build: ./Service
+   
+    expose:
+      - "80"
+    ports:
+      - "5000:80"
+   
+
+  
